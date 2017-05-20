@@ -14,15 +14,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class GeradorNotaFiscal {
-	public void geraNota(Fatura f, Imposto imposto) {
+	private final String password = "refatoracao123";
+	public NotaFiscal geraNota(Fatura f, Imposto imposto) {
 		NotaFiscal notaFiscal = geraNotaFiscal(f, imposto);
 		armazenarNoBanco(notaFiscal);
 		enviarEmail(f);
+		
+		return notaFiscal;
 	}
 
 	private void enviarEmail(Fatura f) {
 		final String username = "refatoracaoalfa2017@gmail.com";
-		final String password = "refatoracao123";
+		
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");

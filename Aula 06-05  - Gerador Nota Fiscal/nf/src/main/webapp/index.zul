@@ -20,7 +20,7 @@
 						<label value="Valor Fatura" />
 					</cell>
 					<cell align="left">
-						<decimalbox id="dcmlbxValorFatura"/>
+						<decimalbox id="dcmlbxValorFatura" />
 					</cell>
 				</row>
 				<row>
@@ -39,11 +39,38 @@
 				</row>
 				<row>
 					<cell align="center" colspan="2">
-						<button label="Gerar Nota Fiscal" id="btnGerarNotaFiscal"/>
+						<button label="Gerar Nota Fiscal"
+							id="btnGerarNotaFiscal" />
 					</cell>
 
 				</row>
 			</rows>
 		</grid>
+		<grid>
+			<columns>
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<listbox id="lstbxNotaFiscal" mold="paging"
+						pageSize="5" model="@{exemplo$composer.listaNotaFiscal}"
+						width="100%" emptyMessage="Nenhum informação na tabela."
+						visible="false">
+						<listhead sizable="true">
+							<listheader label="Imposto" width="50%"
+								align="center" />
+							<listheader label="Valor Bruto" width="50%"
+								align="center" />
+						</listhead>
+						<listitem self="@{each=registro}"
+							value="@{registro}">
+							<listcell label="@{registro.i}" />
+							<listcell label="@{registro.vb}" />
+						</listitem>
+					</listbox>
+				</row>
+			</rows>
+		</grid>
+
 	</window>
 </zk>

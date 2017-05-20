@@ -1,5 +1,7 @@
 package br.com.diego.nf;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,8 @@ public class NotaFiscal {
 	private int id;
 	private double i;
 	private double vb;
-
+	
+	public NotaFiscal(){}
 	public NotaFiscal(double i, double vb) {
 		this.i = i;
 		this.vb = vb;
@@ -40,6 +43,10 @@ public class NotaFiscal {
 
 	public void setVb(double vb) {
 		this.vb = vb;
+	}
+	
+	public double valorTotal(){
+		return this.vb + this.i;
 	}
 
 }
